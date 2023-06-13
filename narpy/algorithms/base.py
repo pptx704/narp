@@ -26,3 +26,27 @@ class BaseAlgorithm:
         :return: None
         """
         raise NotImplementedError
+
+    def update_action_space(self, action_space: int) -> None:
+        """
+        Updates the action space.
+        :param action_space: The new action space
+        :type action_space: int
+        :return: None
+        """
+        self.action_space = action_space
+    
+    def update_state_space(self, state_space: int) -> None:
+        """
+        Updates the action space.
+        :param action_space: The new action space
+        :type action_space: int
+        :return: None
+        """
+        self.state_space = state_space
+
+    def build(self):
+        """
+        Initiates the algorithm class based on all parameters given previously
+        """
+        raise NotImplementedError

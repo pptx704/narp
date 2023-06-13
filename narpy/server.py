@@ -12,7 +12,7 @@ class Server:
     The server class is used to communicate with the client.
     This is the backbone of babopy and implemented to handle everything regarding the simulation on server side.
     """
-    def __init__(self, host, port, algorithm):
+    def __init__(self, host, port, algorithm, **kwargs):
         """
         Initializes the server.
         :param host: The host address to bind to
@@ -20,12 +20,13 @@ class Server:
         :param port: The port to bind to
         :type port: int
         :param algorithm: The algorithm to use
-        :type algorithm: str
+        :type algorithm: str | function
         """
         self.port: int = port
         self.host: str = host
+
         if isinstance(algorithm, str):
-            self.action_space: BaseAlgorithm = algo_map.get(algorithm, algo_map['random'])()
+            self.action_space: BaseAlgorithm = algo_map.get(algorithm, algo_map['random'])(**kwargs)
         else:
             self.action_space: BaseAlgorithm = algorithm
 
@@ -73,11 +74,27 @@ class Server:
         self.send(ACTSPACE)
         data = self.receive()
         try:
-            action_space = int(data)
+            action_space = int(data.split()[-1])
             self.action_space.update_action_space(action_space)
             return action_space
         except ValueError:
             return -1
+    def fetch_state_space(self) -> int:
+        """
+        Fetches the action space from the client.
+        Uses the 'SSP' command as per the protocol.
+        :return: The action space
+        :rtype: int
+        """
+        self.send(STATESPACE)
+        data = self.receive()
+        try:
+            state_space = int(data.split()[-1])
+            self.action_space.update_state_space(state_space)
+            return state_space
+        except ValueError:
+            return -1
+
 
     def send_action(self, action) -> None:
         """
@@ -175,10 +192,14 @@ class Server:
         self.conn.close()
         self.socket.close()
 
-def make(host='0.0.0.0', port=7234, algorithm='random', seed=None):
+def make(host='0.0.0.0', port=7234, algorithm='random', seed=None, **kwargs):
     if seed is not None:
         random.seed(seed)
-    server = Server(host, port, algorithm)
+        
+    server = Server(host, port, algorithm, **kwargs)
     server.start()
     server.fetch_action_space()
+    if kwargs.get("get_space_state"):
+        server.fetch_state_space()
+    server.action_space.build()
     return server
