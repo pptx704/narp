@@ -79,6 +79,7 @@ class Server:
             return action_space
         except ValueError:
             return -1
+        
     def fetch_state_space(self) -> int:
         """
         Fetches the action space from the client.
