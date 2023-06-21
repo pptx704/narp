@@ -199,7 +199,7 @@ def make(host='0.0.0.0', port=7234, algorithm='random', seed=None, **kwargs):
     server = Server(host, port, algorithm, **kwargs)
     server.start()
     server.fetch_action_space()
-    if kwargs.get("get_space_state"):
+    if kwargs.get("state_space"):
         server.fetch_state_space()
     server.action_space.build()
     return server
