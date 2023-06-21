@@ -96,7 +96,6 @@ class Server:
         except ValueError:
             return -1
 
-
     def send_action(self, action) -> None:
         """
         Sends an action to the client.

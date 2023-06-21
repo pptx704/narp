@@ -39,6 +39,15 @@
                         <li>
                                 <a class="function" href="#BaseAlgorithm.update">update</a>
                         </li>
+                        <li>
+                                <a class="function" href="#BaseAlgorithm.update_action_space">update_action_space</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#BaseAlgorithm.update_state_space">update_state_space</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#BaseAlgorithm.build">build</a>
+                        </li>
                 </ul>
 
             </li>
@@ -91,6 +100,30 @@
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        :return: None</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="k">def</span> <span class="nf">update_action_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action_space</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">        Updates the action space.</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">        :param action_space: The new action space</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">        :type action_space: int</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">        :return: None</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">action_space</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>    
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>    <span class="k">def</span> <span class="nf">update_state_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_space</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        Updates the action space.</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        :param action_space: The new action space</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        :type action_space: int</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        :return: None</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span> <span class="o">=</span> <span class="n">state_space</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        Initiates the algorithm class based on all parameters given previously</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 </span></pre></div>
 
 
@@ -134,6 +167,30 @@
 </span><span id="BaseAlgorithm-27"><a href="#BaseAlgorithm-27"><span class="linenos">27</span></a><span class="sd">        :return: None</span>
 </span><span id="BaseAlgorithm-28"><a href="#BaseAlgorithm-28"><span class="linenos">28</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="BaseAlgorithm-29"><a href="#BaseAlgorithm-29"><span class="linenos">29</span></a>        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</span><span id="BaseAlgorithm-30"><a href="#BaseAlgorithm-30"><span class="linenos">30</span></a>
+</span><span id="BaseAlgorithm-31"><a href="#BaseAlgorithm-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">update_action_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action_space</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseAlgorithm-32"><a href="#BaseAlgorithm-32"><span class="linenos">32</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm-33"><a href="#BaseAlgorithm-33"><span class="linenos">33</span></a><span class="sd">        Updates the action space.</span>
+</span><span id="BaseAlgorithm-34"><a href="#BaseAlgorithm-34"><span class="linenos">34</span></a><span class="sd">        :param action_space: The new action space</span>
+</span><span id="BaseAlgorithm-35"><a href="#BaseAlgorithm-35"><span class="linenos">35</span></a><span class="sd">        :type action_space: int</span>
+</span><span id="BaseAlgorithm-36"><a href="#BaseAlgorithm-36"><span class="linenos">36</span></a><span class="sd">        :return: None</span>
+</span><span id="BaseAlgorithm-37"><a href="#BaseAlgorithm-37"><span class="linenos">37</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm-38"><a href="#BaseAlgorithm-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">action_space</span>
+</span><span id="BaseAlgorithm-39"><a href="#BaseAlgorithm-39"><span class="linenos">39</span></a>    
+</span><span id="BaseAlgorithm-40"><a href="#BaseAlgorithm-40"><span class="linenos">40</span></a>    <span class="k">def</span> <span class="nf">update_state_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_space</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseAlgorithm-41"><a href="#BaseAlgorithm-41"><span class="linenos">41</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm-42"><a href="#BaseAlgorithm-42"><span class="linenos">42</span></a><span class="sd">        Updates the action space.</span>
+</span><span id="BaseAlgorithm-43"><a href="#BaseAlgorithm-43"><span class="linenos">43</span></a><span class="sd">        :param action_space: The new action space</span>
+</span><span id="BaseAlgorithm-44"><a href="#BaseAlgorithm-44"><span class="linenos">44</span></a><span class="sd">        :type action_space: int</span>
+</span><span id="BaseAlgorithm-45"><a href="#BaseAlgorithm-45"><span class="linenos">45</span></a><span class="sd">        :return: None</span>
+</span><span id="BaseAlgorithm-46"><a href="#BaseAlgorithm-46"><span class="linenos">46</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm-47"><a href="#BaseAlgorithm-47"><span class="linenos">47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span> <span class="o">=</span> <span class="n">state_space</span>
+</span><span id="BaseAlgorithm-48"><a href="#BaseAlgorithm-48"><span class="linenos">48</span></a>
+</span><span id="BaseAlgorithm-49"><a href="#BaseAlgorithm-49"><span class="linenos">49</span></a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="BaseAlgorithm-50"><a href="#BaseAlgorithm-50"><span class="linenos">50</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm-51"><a href="#BaseAlgorithm-51"><span class="linenos">51</span></a><span class="sd">        Initiates the algorithm class based on all parameters given previously</span>
+</span><span id="BaseAlgorithm-52"><a href="#BaseAlgorithm-52"><span class="linenos">52</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm-53"><a href="#BaseAlgorithm-53"><span class="linenos">53</span></a>        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 </span></pre></div>
 
 
@@ -220,6 +277,108 @@
 <blockquote>
   <p>None</p>
 </blockquote>
+</div>
+
+
+                            </div>
+                            <div id="BaseAlgorithm.update_action_space" class="classattr">
+                                        <input id="BaseAlgorithm.update_action_space-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">update_action_space</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">action_space</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="BaseAlgorithm.update_action_space-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#BaseAlgorithm.update_action_space"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BaseAlgorithm.update_action_space-31"><a href="#BaseAlgorithm.update_action_space-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">update_action_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action_space</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseAlgorithm.update_action_space-32"><a href="#BaseAlgorithm.update_action_space-32"><span class="linenos">32</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm.update_action_space-33"><a href="#BaseAlgorithm.update_action_space-33"><span class="linenos">33</span></a><span class="sd">        Updates the action space.</span>
+</span><span id="BaseAlgorithm.update_action_space-34"><a href="#BaseAlgorithm.update_action_space-34"><span class="linenos">34</span></a><span class="sd">        :param action_space: The new action space</span>
+</span><span id="BaseAlgorithm.update_action_space-35"><a href="#BaseAlgorithm.update_action_space-35"><span class="linenos">35</span></a><span class="sd">        :type action_space: int</span>
+</span><span id="BaseAlgorithm.update_action_space-36"><a href="#BaseAlgorithm.update_action_space-36"><span class="linenos">36</span></a><span class="sd">        :return: None</span>
+</span><span id="BaseAlgorithm.update_action_space-37"><a href="#BaseAlgorithm.update_action_space-37"><span class="linenos">37</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm.update_action_space-38"><a href="#BaseAlgorithm.update_action_space-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">action_space</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Updates the action space.</p>
+
+<h6 id="parameters">Parameters</h6>
+
+<ul>
+<li><strong>action_space</strong>:  The new action space</li>
+</ul>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>None</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                            <div id="BaseAlgorithm.update_state_space" class="classattr">
+                                        <input id="BaseAlgorithm.update_state_space-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">update_state_space</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">state_space</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="BaseAlgorithm.update_state_space-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#BaseAlgorithm.update_state_space"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BaseAlgorithm.update_state_space-40"><a href="#BaseAlgorithm.update_state_space-40"><span class="linenos">40</span></a>    <span class="k">def</span> <span class="nf">update_state_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_space</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseAlgorithm.update_state_space-41"><a href="#BaseAlgorithm.update_state_space-41"><span class="linenos">41</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm.update_state_space-42"><a href="#BaseAlgorithm.update_state_space-42"><span class="linenos">42</span></a><span class="sd">        Updates the action space.</span>
+</span><span id="BaseAlgorithm.update_state_space-43"><a href="#BaseAlgorithm.update_state_space-43"><span class="linenos">43</span></a><span class="sd">        :param action_space: The new action space</span>
+</span><span id="BaseAlgorithm.update_state_space-44"><a href="#BaseAlgorithm.update_state_space-44"><span class="linenos">44</span></a><span class="sd">        :type action_space: int</span>
+</span><span id="BaseAlgorithm.update_state_space-45"><a href="#BaseAlgorithm.update_state_space-45"><span class="linenos">45</span></a><span class="sd">        :return: None</span>
+</span><span id="BaseAlgorithm.update_state_space-46"><a href="#BaseAlgorithm.update_state_space-46"><span class="linenos">46</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm.update_state_space-47"><a href="#BaseAlgorithm.update_state_space-47"><span class="linenos">47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span> <span class="o">=</span> <span class="n">state_space</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Updates the action space.</p>
+
+<h6 id="parameters">Parameters</h6>
+
+<ul>
+<li><strong>action_space</strong>:  The new action space</li>
+</ul>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>None</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                            <div id="BaseAlgorithm.build" class="classattr">
+                                        <input id="BaseAlgorithm.build-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">build</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="BaseAlgorithm.build-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#BaseAlgorithm.build"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BaseAlgorithm.build-49"><a href="#BaseAlgorithm.build-49"><span class="linenos">49</span></a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="BaseAlgorithm.build-50"><a href="#BaseAlgorithm.build-50"><span class="linenos">50</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm.build-51"><a href="#BaseAlgorithm.build-51"><span class="linenos">51</span></a><span class="sd">        Initiates the algorithm class based on all parameters given previously</span>
+</span><span id="BaseAlgorithm.build-52"><a href="#BaseAlgorithm.build-52"><span class="linenos">52</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseAlgorithm.build-53"><a href="#BaseAlgorithm.build-53"><span class="linenos">53</span></a>        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Initiates the algorithm class based on all parameters given previously</p>
 </div>
 
 
