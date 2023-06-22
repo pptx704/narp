@@ -7,7 +7,7 @@ class Client:
     """
     Client implementation of a python client that following the babopy protocol.
     """
-    def __init__(self, action_space: int, host: str = 'localhost', port: int = 7234, func: typing.Callable = None):
+    def __init__(self, action_space: int, state_space: None, host: str = 'localhost', port: int = 7234, func: typing.Callable = None, **kwargs):
         """
         Initializes the client.
         Server must be running before the client can connect.
@@ -23,10 +23,12 @@ class Client:
         self.host = host
         self.port = port
         self.action_space = action_space
+        self.state_space = state_space
         if func is not None:
             self.func = func
         else:
             self.func = get_random_state
+        self.data = kwargs
 
     def send(self, data) -> None:
         """
@@ -50,12 +52,12 @@ class Client:
         This is a helper function to convert a dictionary to a NARP compliant string.
         """
         string = ""
-        string.add(f"OBS {data_dict['observation']}\n")
-        string.add(f"REW {data_dict['reward']}\n")
-        string.add(f"TER {data_dict['terminated']}\n")
-        string.add(f"TRN {data_dict['truncated']}\n")
+        string += f"OBS {data_dict['observation']}\n"
+        string += f"REW {data_dict['reward']}\n"
+        string += f"TER {data_dict['terminated']}\n"
+        string += f"TRN {data_dict['truncated']}\n"
         for key, value in data_dict['info'].items():
-            string.add(f"INF {key} {value}\n")
+            string += f"INF {key} {value}\n"
         string += "END"
         return string
 
@@ -76,14 +78,16 @@ class Client:
                     break
                 elif data == 'ASP':
                     self.send(str(self.action_space))
+                elif data == 'SSP':
+                    self.send(str(self.state_space))
                 elif data.startswith('ACT'):
                     action = int(data.split(' ')[1])
-                    state = self.func(action)
+                    state = self.func(self, action)
                     self.send(self.make_data({
                         'observation': state[0],
                         'reward': state[1],
-                        'terminated': state[2],
-                        'truncated': state[3],
+                        'terminated': '1' if state[2] else '0',
+                        'truncated': '1' if state[3] else '0',
                         'info': state[4]
                     }))
                 else:
