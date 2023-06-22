@@ -1,7 +1,14 @@
+from queue import Queue
+
 class BaseAlgorithm:
     """ 
     Interface for all algorithms. Any algorithm that will be passed to `babopy.Server` must implement this interface.
     """
+    def __init__(self, **kwargs) -> None:
+        if kwargs.get("reward_graph"):
+            self.queue = Queue()
+            self.reward_graph = True
+
     def sample(self) -> int:
         """
         Returns an action from the action space.
@@ -10,7 +17,7 @@ class BaseAlgorithm:
         """
         raise NotImplementedError
     
-    def update(self, observation: float, reward: float, termination: bool, truncation: bool, info: dict) -> None:
+    def update(self, observation: float, reward: float, termination: bool, truncation: bool, info: dict, *args, **kwargs) -> None:
         """
         Updates the algorithm with the latest observation, reward, termination, truncation and info.
         :param observation: The latest observation
@@ -25,7 +32,8 @@ class BaseAlgorithm:
         :type info: dict
         :return: None
         """
-        raise NotImplementedError
+        if self.reward_graph:
+            self.queue.put(reward)
 
     def update_action_space(self, action_space: int) -> None:
         """
