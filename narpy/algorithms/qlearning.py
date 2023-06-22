@@ -79,7 +79,7 @@ class QLearning(BaseAlgorithm):
         :return: The epsilon value
         :rtype: float
         """
-        return min(self.max_epsilon - self.epsilon_decay * self.current_state, self.min_epsilon)
+        return max(self.max_epsilon - self.epsilon_decay * self.current_state, self.min_epsilon)
 
     def sample(self) -> int:
         """

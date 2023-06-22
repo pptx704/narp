@@ -86,8 +86,8 @@ class Client:
                     self.send(self.make_data({
                         'observation': state[0],
                         'reward': state[1],
-                        'terminated': state[2],
-                        'truncated': state[3],
+                        'terminated': '1' if state[2] else '0',
+                        'truncated': '1' if state[3] else '0',
                         'info': state[4]
                     }))
                 else:
