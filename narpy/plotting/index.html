@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="observation" style="width:100%;max-width:800px"></canvas>
+<div></div>
+<canvas id="reward" style="width:100%;max-width:800px"></canvas>
+<script>
+
+
+function createChart(idName, data){
+    return new Chart(idName, {
+        type: "line",
+        data: {
+            labels: [],
+            datasets: [{
+                label: idName,
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: data
+            }]
+        },
+        options: {
+            // display the legend with the title same as the idName
+            legend: {display: true, position: "right"},
+            title: {display: true, text: idName, position: "bottom"},
+
+            scales: {
+            yAxes: [{ticks: {min: -100, max:100}}],
+            }
+        }
+        });
+}
+
+function addData(chart, label, data) {
+    // clear the chart
+    chart.data.labels = label;
+    chart.data.datasets[0].data = data;
+    // change axis scale based on data
+    chart.options.scales.yAxes[0].ticks.min = Math.min(...data) - 1;
+    chart.options.scales.yAxes[0].ticks.max = Math.max(...data) + 1;
+    chart.update();
+}
+
+const observationChart = createChart("observation", []);
+const rewardChart = createChart("reward", []);
+
+// connect to the websocket localhost:7235
+const socket = new WebSocket("ws://localhost:7235");
+// show a message when the connection is established
+socket.onopen = function(event) {
+    console.log("Connection established");
+};
+
+socket.onmessage = function(event) {
+    const message = JSON.parse(event.data);
+    console.log(message);
+    addData(observationChart, message.x, message.observations);
+    addData(rewardChart, message.x, message.rewards);
+};
+
+socket.onclose = function(event) {
+    if (event.wasClean) {
+        console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+    } else {
+        console.log("[close] Connection died");
+    }
+};
+
+</script>
+
+</body>
+</html>
+

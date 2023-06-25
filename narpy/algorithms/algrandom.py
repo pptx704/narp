@@ -7,7 +7,7 @@ class RandomAlgorithm(BaseAlgorithm):
     """
     This algorithm chooses an action from the action space randomly.
     """
-    def __init__(self, action_space: int = -1, state_space=None):
+    def __init__(self, action_space: int = -1, state_space=None, **kwargs):
         """
         Initializes the algorithm.
         :param action_space: The action space
@@ -15,7 +15,7 @@ class RandomAlgorithm(BaseAlgorithm):
         :param state_space: The state space. Not used in this algorithm
         :type state_space: None
         """
-        super().__init__()
+        super().__init__(**kwargs)
         self.action_space = action_space
         self.state_space = state_space
         

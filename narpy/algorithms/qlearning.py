@@ -16,7 +16,8 @@ class QLearning(BaseAlgorithm):
             discount_factor=0.9, 
             min_epsilon=0.05,
             max_epsilon=1.0,
-            epsilon_decay=0.01
+            epsilon_decay=0.01,
+            **kwargs
         ):
         """
         Initializes the algorithm.
@@ -25,6 +26,7 @@ class QLearning(BaseAlgorithm):
         :param state_space: The state space. Not used in this algorithm
         :type state_space: None
         """
+        super().__init__(**kwargs)
         self.action_space = action_space
         self.state_space = state_space
         self.current_state = 0
@@ -105,6 +107,7 @@ class QLearning(BaseAlgorithm):
         :type info: dict
         :return: None
         """
+        super().update(observation, reward, termination, truncation, info)
         td = reward + self.discount_factor * np.max(self.qtable[observation, :]) - self.qtable[self.current_state, self.current_action]
         self.qtable[self.current_state, self.current_action] += self.learning_rate * td
         self.current_reward = reward

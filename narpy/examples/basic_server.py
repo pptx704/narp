@@ -1,5 +1,6 @@
 from narpy import make
 from pprint import pprint
+from time import sleep
 
 server = make(seed=42, state_space=True, algorithm='qlearning')
 
@@ -10,17 +11,7 @@ for i in range(1000):
     observation, reward, terminated, truncated, info = server.step(action)
     trajectory.append(observation)
     if terminated:
-        print(i)
         break
-    # pprint({
-    #     'action': action,
-    #     'observation': observation,
-    #     'reward': reward,
-    #     'terminated': terminated,
-    #     'truncated': truncated,
-    #     'info': info
-    # })
+    sleep(0.2)
 
-# stop the server
-pprint(trajectory)
 server.stop()

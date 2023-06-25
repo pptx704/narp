@@ -28,7 +28,7 @@ def generate_data(client, action):
         point = point
     
     new_position = point[0] + point[1] * 5
-    new_distance = abs(point[0] - 4) + abs(point[1] - 4)
+    new_distance = ((point[0] - 4) ** 2 + (point[1] - 4) ** 2) ** 0.5
     reward = distance - new_distance
     terminated = new_distance == 0
     truncated = False
@@ -37,8 +37,10 @@ def generate_data(client, action):
     client.data['distance'] = new_distance
 
     res = (new_position, reward, terminated, truncated, {})
-    print(res)
     return res
 
-client = client.Client(action_space=5, state_space=25, func=generate_data, host='localhost', port=7234, distance=8, position=0)
+# distance is straight line distance from goal
+distance = 32 ** 0.5
+
+client = client.Client(action_space=5, state_space=25, func=generate_data, host='localhost', port=7234, distance=distance, position=0)
 client.start()
