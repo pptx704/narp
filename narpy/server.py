@@ -25,8 +25,11 @@ class Server:
         self.port: int = port
         self.host: str = host
 
+        if kwargs.get('reward_graph'):
+            self.reward_graph = kwargs['reward_graph']
+
         if isinstance(algorithm, str):
-            self.action_space: BaseAlgorithm = algo_map.get(algorithm, algo_map['random'])(**kwargs)
+            self.action_space: BaseAlgorithm = algo_map.get(algorithm, algo_map['random'])(host=host, port=port, **kwargs)
         else:
             self.action_space: BaseAlgorithm = algorithm
 
@@ -189,14 +192,18 @@ class Server:
         :return: None
         """
         self.send(QUIT)
+        if self.reward_graph:
+            self.action_space.queue.put(None)
+            self.action_space.graph.stop()
+            self.action_space.graph_thread.join()
         self.conn.close()
         self.socket.close()
 
-def make(host='0.0.0.0', port=7234, algorithm='random', seed=None, **kwargs):
+def make(host='0.0.0.0', port=7234, algorithm='random', seed=None, reward_graph=True, **kwargs):
     if seed is not None:
         random.seed(seed)
         
-    server = Server(host, port, algorithm, **kwargs)
+    server = Server(host, port, algorithm, reward_graph=reward_graph, **kwargs)
     server.start()
     server.fetch_action_space()
     if kwargs.get("state_space"):

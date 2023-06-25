@@ -1,13 +1,18 @@
 from queue import Queue
+from ..plotting import GraphWebsocket as GWS
+import threading
 
 class BaseAlgorithm:
     """ 
     Interface for all algorithms. Any algorithm that will be passed to `babopy.Server` must implement this interface.
     """
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, host = 'localhost', port=7234, **kwargs) -> None:
         if kwargs.get("reward_graph"):
             self.queue = Queue()
             self.reward_graph = True
+            self.graph = GWS(self.queue, host, port=port+1)
+            self.graph_thread = threading.Thread(target=self.graph.run)
+            self.graph_thread.start()
 
     def sample(self) -> int:
         """
@@ -33,7 +38,7 @@ class BaseAlgorithm:
         :return: None
         """
         if self.reward_graph:
-            self.queue.put(reward)
+            self.queue.put((observation, reward))
 
     def update_action_space(self, action_space: int) -> None:
         """
